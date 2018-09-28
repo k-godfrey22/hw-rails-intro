@@ -56,14 +56,14 @@ class MoviesController < ApplicationController
     ##Our variable from above, rates, can be updated to include a ratings sessions
     @rates = params[:ratings] || session[:ratings]
     
+    ##Define a sorted session and a ratings session
     session[:sort_by] = @sort_column
     session[:ratings] = @rates
     
-    @movies = Movie.where(rating: session[:ratings].keys).order(session[:sort_by]) 
     
     ##update Movie.where... line above to remember sessions
+    @movies = Movie.where(rating: session[:ratings].keys).order(session[:sort_by]) 
     
-    ##no sort_by parameter and a sort_by session or ratings parameter is nil and no session rating we want to redirect
     
     
     
